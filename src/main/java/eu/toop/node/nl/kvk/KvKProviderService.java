@@ -10,6 +10,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import eu.toop.node.model.Address;
 import eu.toop.node.model.ChamberOfCommerceDataSet;
+import eu.toop.node.model.Constants;
 import eu.toop.node.util.RestClient;
 
 @Service
@@ -26,13 +27,13 @@ public class KvKProviderService extends RestClient {
 		JsonNode node = root.get("data").get("items").get(0);
 		set.setCompanyCode(node.get("kvkNumber").asText());
 		set.setCompanyName(node.get("tradeNames").get("businessName").asText());
-		set.setCompanyType("NOT_AVAILABLE");
-		set.setLegalStatus("NOT_AVAILABLE");
-		set.setLegalStatusEffectiveDate("NOT_AVAILABLE");
+		set.setCompanyType(Constants.NOT_AVAILABLE);
+		set.setLegalStatus(Constants.NOT_AVAILABLE);
+		set.setLegalStatusEffectiveDate(Constants.NOT_AVAILABLE);
 		set.setRegistrationAuthority("KamerVanKoophandel");
-		set.setRegistrationDate("NOT_AVAILABLE");
-		set.setRegistrationNumber("NOT_APPLICABLE");
-		set.setActivityDeclaration("NOT_AVAILABLE");
+		set.setRegistrationDate(Constants.NOT_AVAILABLE);
+		set.setRegistrationNumber(Constants.NOT_AVAILABLE);
+		set.setActivityDeclaration(Constants.NOT_AVAILABLE);
 		
 		Address address = new Address();
 		address.setStreetName(node.get("addresses").get(0).get("street").asText());
